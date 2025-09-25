@@ -1,5 +1,21 @@
-function main(){
-  console.log("Hello, world!");
+import { initState } from "./commands/state.js";
+import { startREPL } from "./repl.js";
+
+async function main(){
+  const state = initState()
+  try{
+
+    await startREPL(state);
+  }catch(err){
+
+    if(err instanceof Error ){
+
+      console.error(err.message)
+    }else{
+      console.error("An unknown error occured")
+      process.exit(1)
+    }
+  }
 }
 
 main();
