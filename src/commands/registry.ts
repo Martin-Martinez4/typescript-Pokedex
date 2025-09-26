@@ -1,6 +1,9 @@
+import { catchPoke } from "./catch.js"
 import { map, mapb } from "./command_map.js"
+import { explore } from "./explore.js"
 import {commandExit, commandHelp} from "./index.js"
 import { State, CLICommand } from "./index.js"
+import { inspect } from "./inspect.js"
 
 
 export function getCommands(): Record<string, CLICommand> {
@@ -24,6 +27,21 @@ export function getCommands(): Record<string, CLICommand> {
       name: "mapb",
       description: "Displays the previous list of locations",
       callback: mapb,
+    },
+    explore: {
+      name: "explore",
+      description: "See the Pokemon in the area requires one arg <locationName>",
+      callback: explore,
+    },
+    catch: {
+      name: "catch",
+      description: "Attempt to catch Pokemon requires one arg <pokemonName>",
+      callback: catchPoke,
+    },
+    inspect: {
+      name: "inspect",
+      description: "See info of Pokemon that you have already caught requires one arg <pokemonName>",
+      callback: inspect,
     }
   }
 }

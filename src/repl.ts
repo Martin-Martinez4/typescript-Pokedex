@@ -13,10 +13,23 @@ export async function startREPL(state: State) {
   const commands = getCommands();
   const rl = state.rl
 
-  rl.prompt();
-  rl.on("line", async (input: string) => {
+  state.rl.prompt();
+  state.rl.on("line", async (input: string) => {
     if(input.length > 0){
-      await commands[cleanInput(input)[0]].callback(state)
+      const cmd = commands[cleanInput(input)[0]]; 
+      const [, ...args] = cleanInput(input)
+      if(cmd != undefined){
+
+        if(args.length > 0){
+
+          await cmd.callback(state, ...args)
+        }else{
+          await cmd.callback(state)
+
+        }
+      }else{
+        console.log("unknown command")
+      }
     }
     rl.prompt()
   })

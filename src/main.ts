@@ -2,7 +2,7 @@ import { initState } from "./commands/state.js";
 import { startREPL } from "./repl.js";
 
 async function main(){
-  const state = initState()
+  const state = initState(1000 * 60 * 5)
   try{
 
     await startREPL(state);

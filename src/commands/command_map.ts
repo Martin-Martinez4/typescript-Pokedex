@@ -26,7 +26,6 @@ export async function mapb(state: State) {
   state.prevLocationsURL = res.previous
   console.log(res.results.forEach((loc) => {
     if (loc.name) {
-
       console.log(loc.name)
     }
   }))
