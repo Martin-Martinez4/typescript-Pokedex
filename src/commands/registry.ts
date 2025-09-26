@@ -4,6 +4,7 @@ import { explore } from "./explore.js"
 import {commandExit, commandHelp} from "./index.js"
 import { State, CLICommand } from "./index.js"
 import { inspect } from "./inspect.js"
+import { list } from "./list.js"
 
 
 export function getCommands(): Record<string, CLICommand> {
@@ -42,6 +43,11 @@ export function getCommands(): Record<string, CLICommand> {
       name: "inspect",
       description: "See info of Pokemon that you have already caught requires one arg <pokemonName>",
       callback: inspect,
+    },
+      list: {
+      name: "list",
+      description: "List the names of pokemon in your pokedex (ones you hav caught)",
+      callback: list,
     }
   }
 }
